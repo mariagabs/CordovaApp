@@ -17,6 +17,9 @@ body {
     font-family: 'PT Sans', Arial, sans-serif;
 }
 
+
+/* Menu */
+
 nav .offcanvas-body,
 nav .offcanvas-header {
     background-color: var(--gray);
@@ -52,9 +55,41 @@ nav .offcanvas-header .close-btn {
     background-image: url(../img/menu-icon.svg) !important;
 }
 
-.fixed-bottom {
+
+/* Bottom Tabs */
+
+footer .fixed-bottom {
     z-index: unset;
     bottom: 15px;
     right: 10px;
     left: 10px;
+}
+
+.nav-pills .nav-link {
+    background-color: var(--gray);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--yellow);
+    color: var(--gray);
+}
+
+.nav-justified .nav-item:nth-child(1),
+.nav-justified .nav-item:nth-child(2),
+.nav-justified .nav-item:nth-child(3) {
+    margin-right: 10px;
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-link img {
+    height: 20px;
+    margin-bottom: 5px;
 }
