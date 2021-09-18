@@ -156,13 +156,6 @@ nav .offcanvas-header .close-btn {
     background-color: var(--darkBlue);
 }
 
-.carousel-things .carousel-inner .carousel-item:nth-child(1) .card {
-    background-image: url(../img/solar-system.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position-x: 111%;
-}
-
 
 /* Bottom Tabs */
 
@@ -204,10 +197,48 @@ footer .fixed-bottom {
 }
 
 
+/* Scroolbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: black;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: var(--gray);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gray);
+}
+
+
 /* Mobile */
 
 @media (max-width: 768px) {
     body {
         overflow-y: hidden;
+    }
+    .carousel-things .carousel-inner .carousel-item:nth-child(1) .card {
+        background-image: url(../img/solar-system.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position-x: 111%;
     }
 }
