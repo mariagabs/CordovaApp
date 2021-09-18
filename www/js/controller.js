@@ -1,25 +1,31 @@
 function AppController() {
-    this.init = () => {
-        AppController.getPlanets();
-        AppController.getKnowncount();
-    };
+  this.init = () => {
+    let today = new Date();
+    let yesterday = new Date();
 
-    this.getPlanets = () => {
-        fetch(`https://api.le-systeme-solaire.net/rest/bodies`)
-            .then((response) => response.json())
-            .then((resp) => {
-                AppController.buildPlanets(resp.bodies);
-            })
-            .catch((error) => console.log("error ->" + error));
-    };
+    yesterday.setDate(today.getDate() - 1);
+    let yesterdayFormat = yesterday.toISOString().split("T")[0];
+    AppController.getPlanets();
+    AppController.getKnowncount();
+    AppController.getAsteroids(yesterdayFormat);
+  };
 
-    this.buildPlanets = (results) => {
-        let aux = true;
-        results.forEach((item) => {
-            if (item.isPlanet === true) {
-                const qntMoons = item.moons != null ? item.moons.length : 0;
-                var planets = document.getElementById("planets");
-                planets.innerHTML += `
+  this.getPlanets = () => {
+    fetch(`https://api.le-systeme-solaire.net/rest/bodies`)
+      .then((response) => response.json())
+      .then((resp) => {
+        AppController.buildPlanets(resp.bodies);
+      })
+      .catch((error) => console.log("error ->" + error));
+  };
+
+  this.buildPlanets = (results) => {
+    let aux = true;
+    results.forEach((item) => {
+      if (item.isPlanet === true) {
+        const qntMoons = item.moons != null ? item.moons.length : 0;
+        var planets = document.getElementById("planets");
+        planets.innerHTML += `
             <div class="carousel-item ${aux ? "active" : ""}">
                 <div class="card">
                     <div class="card-body">
@@ -54,25 +60,25 @@ function AppController() {
                 </div>
             </div>
             `;
-                aux = false;
-            }
-        });
-    };
+        aux = false;
+      }
+    });
+  };
 
-    this.getKnowncount = () => {
-        fetch(`https://api.le-systeme-solaire.net/rest/knowncount`)
-            .then((response) => response.json())
-            .then((resp) => {
-                AppController.buildKnowncount(resp.knowncount);
-            })
-            .catch((error) => console.log(error));
-    };
+  this.getKnowncount = () => {
+    fetch(`https://api.le-systeme-solaire.net/rest/knowncount`)
+      .then((response) => response.json())
+      .then((resp) => {
+        AppController.buildKnowncount(resp.knowncount);
+      })
+      .catch((error) => console.log(error));
+  };
 
-    this.buildKnowncount = (results) => {
-        let aux = true;
-        results.forEach((item) => {
-            var things = document.getElementById("things");
-            things.innerHTML += `
+  this.buildKnowncount = (results) => {
+    let aux = true;
+    results.forEach((item) => {
+      var things = document.getElementById("things");
+      things.innerHTML += `
       <div class="carousel-item ${aux ? "active" : ""}">
         <div class="card">
           <div class="card-body">
@@ -88,67 +94,109 @@ function AppController() {
         </div>
       </div>
             `;
-            aux = false;
-        });
-    };
+      aux = false;
+    });
+  };
 
-    this.getAsteroids = () => {
-        fetch(
-                `https://api.nasa.gov/neo/rest/v1/feed?start_date=2021-09-17&end_date=2021-09-17&api_key=XbST8m2LTc3xVc1j1LbdDjIorjj4IU6PPHQZFoU7`,
-            )
-            .then((response) => response.json())
-            .catch((error) => console.log(error));
-    };
+  this.getAsteroids = (yesterday) => {
+    fetch(
+      `https://api.nasa.gov/neo/rest/v1/feed?start_date=${yesterday}&end_date=${yesterday}&api_key=XbST8m2LTc3xVc1j1LbdDjIorjj4IU6PPHQZFoU7`,
+    )
+      .then((response) => response.json())
+      .then((resp) => {
+        AppController.buildAsteroids(resp.near_earth_objects[yesterday]);
+      })
+      .catch((error) => console.log("error -> " + error));
+  };
 
-    this.getSpaceX = () => {
-        fetch(`https://api.spacexdata.com/v4/launches/latest`)
-            .then((response) => response.json())
-            .catch((error) => console.log(error));
-    };
+  this.buildAsteroids = (results) => {
+    results.forEach((item) => {
+      var asteroids = document.getElementById("asteroids");
+      asteroids.innerHTML += `
+      <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">
+                    ${item.name}
+                </h5>
+                <p class="card-text">Estimated diameter <span>${item.estimated_diameter.kilometers.estimated_diameter_min.toFixed(
+                  4,
+                )} Km - ${item.estimated_diameter.kilometers.estimated_diameter_max.toFixed(
+        4,
+      )} Km</span></p>
+                <p class="card-text">Potentially dangerous? <span>${
+                  item.is_potentially_hazardous_asteroid ? "Yes" : "No"
+                }</span></p>
+                <p class="card-text">Relative velocity <span>${parseFloat(
+                  item.close_approach_data[0].relative_velocity
+                    .kilometers_per_second,
+                ).toFixed(4)} Km/s</span></p>
+                <p class="card-text">Miss distance <span>${parseFloat(
+                  item.close_approach_data[0].miss_distance.kilometers,
+                ).toFixed(4)} Km</span></p>
+                <a href="${
+                  item.nasa_jpl_url
+                }" target="_blank" class="card-text">Read more...</a>
+            </div>
+        </div>
+            `;
+    });
+  };
 
-    AppController.instance = null;
+  this.getSpaceX = () => {
+    fetch(`https://api.spacexdata.com/v4/launches/latest`)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+  };
 
-    AppController.getInstance = () => {
-        if (AppController.instance == null)
-            AppController.instance = new AppController();
-        return AppController.instance;
-    };
+  this.getNews = () => {
+    fetch(`https://api.spaceflightnewsapi.net/v3/articles`)
+      .then((response) => response.json())
+      .catch((error) => console.log(error));
+  };
 
-    AppController.init = () => {
-        AppController.getInstance().init();
-    };
+  AppController.instance = null;
 
-    AppController.getPlanets = () => {
-        AppController.getInstance().getPlanets();
-    };
+  AppController.getInstance = () => {
+    if (AppController.instance == null)
+      AppController.instance = new AppController();
+    return AppController.instance;
+  };
 
-    AppController.buildPlanets = (planets) => {
-        AppController.getInstance().buildPlanets(planets);
-    };
+  AppController.init = () => {
+    AppController.getInstance().init();
+  };
 
-    AppController.getAsteroids = () => {
-        AppController.getInstance().getAsteroids();
-    };
+  AppController.getPlanets = () => {
+    AppController.getInstance().getPlanets();
+  };
 
-    AppController.buildAsteroids = (asteroids) => {
-        AppController.getInstance().buildAsteroids(asteroids);
-    };
+  AppController.buildPlanets = (planets) => {
+    AppController.getInstance().buildPlanets(planets);
+  };
 
-    AppController.getKnowncount = () => {
-        AppController.getInstance().getKnowncount();
-    };
+  AppController.getAsteroids = (yesterday) => {
+    AppController.getInstance().getAsteroids(yesterday);
+  };
 
-    AppController.buildKnowncount = (knowncount) => {
-        AppController.getInstance().buildKnowncount(knowncount);
-    };
+  AppController.buildAsteroids = (asteroids) => {
+    AppController.getInstance().buildAsteroids(asteroids);
+  };
 
-    AppController.getSpaceX = () => {
-        AppController.getInstance().getSpaceX();
-    };
+  AppController.getKnowncount = () => {
+    AppController.getInstance().getKnowncount();
+  };
 
-    AppController.buildSpaceX = (spacex) => {
-        AppController.getInstance().buildSpaceX(spacex);
-    };
+  AppController.buildKnowncount = (knowncount) => {
+    AppController.getInstance().buildKnowncount(knowncount);
+  };
+
+  AppController.getSpaceX = () => {
+    AppController.getInstance().getSpaceX();
+  };
+
+  AppController.buildSpaceX = (spacex) => {
+    AppController.getInstance().buildSpaceX(spacex);
+  };
 }
 
 AppController();
