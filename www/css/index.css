@@ -17,6 +17,11 @@ body {
   font-family: "PT Sans", Arial, sans-serif;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 /* Menu */
 
 nav .offcanvas-body,
@@ -66,6 +71,7 @@ nav .offcanvas-header .close-btn {
 .card {
   background-color: var(--gray);
   color: white;
+  padding: 30px 40px;
 }
 
 .card-title {
@@ -87,16 +93,25 @@ nav .offcanvas-header .close-btn {
   font-size: 1.1rem;
 }
 
+.carousel-control-next,
+.carousel-control-prev {
+  width: 7%;
+}
+
+.things-title {
+  font-weight: bold;
+}
+
 .carousel-planets .carousel-inner .carousel-item:nth-child(8n + 1) .card {
   background-color: var(--red);
 }
 
 .carousel-planets .carousel-inner .carousel-item:nth-child(8n + 2) .card {
-  background-color: var(--orange);
+  background-color: var(--yellow);
 }
 
 .carousel-planets .carousel-inner .carousel-item:nth-child(8n + 3) .card {
-  background-color: var(--yellow);
+  background-color: var(--orange);
 }
 
 .carousel-planets .carousel-inner .carousel-item:nth-child(8n + 4) .card {
