@@ -1,172 +1,213 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
 :root {
-  --gray: #333333;
-  --yellow: #f2c94c;
-  --orange: #f2994a;
-  --purple: #bb6bd9;
-  --red: #eb5757;
-  --darkBlue: #2f80ed;
-  --blue: #2d9cdb;
-  --lightBlue: #56ccf2;
-  --green: #6fcf97;
+    --gray: #333333;
+    --yellow: #f2c94c;
+    --orange: #f2994a;
+    --purple: #bb6bd9;
+    --red: #eb5757;
+    --darkBlue: #2f80ed;
+    --blue: #2d9cdb;
+    --lightBlue: #56ccf2;
+    --green: #6fcf97;
 }
 
 body {
-  height: 100vh;
-  background: black;
-  font-family: "PT Sans", Arial, sans-serif;
+    height: 100vh;
+    background: black;
+    font-family: "PT Sans", Arial, sans-serif;
 }
 
 a {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
+
 
 /* Menu */
 
 nav .offcanvas-body,
 nav .offcanvas-header {
-  background-color: var(--gray);
-  color: white;
+    background-color: var(--gray);
+    color: white;
 }
 
 nav .offcanvas-header button {
-  outline: none;
+    outline: none;
 }
 
 nav .offcanvas-header .close-btn {
-  box-sizing: content-box;
-  width: 1em;
-  height: 1em;
-  background: url(../img/close-icon.svg) center/1em auto no-repeat;
-  border: none;
-  background-color: transparent;
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    background: url(../img/close-icon.svg) center/1em auto no-repeat;
+    border: none;
+    background-color: transparent;
 }
 
 .navbar-toggler {
-  border: unset;
+    border: unset;
 }
 
 .navbar-toggler:focus {
-  color: unset;
-  border-color: unset;
-  box-shadow: unset;
+    color: unset;
+    border-color: unset;
+    box-shadow: unset;
 }
 
 .navbar-toggler-icon {
-  width: 1.1em;
-  height: 1.1em;
-  background-image: url(../img/menu-icon.svg) !important;
+    width: 1.1em;
+    height: 1.1em;
+    background-image: url(../img/menu-icon.svg) !important;
 }
 
+
 /* Cards */
+
+.container-items,
+.container-asteroids {
+    margin-top: 80px;
+}
+
+.container-planets {
+    margin-top: 40px;
+}
+
+.container-asteroids {
+    overflow-y: scroll;
+}
+
+.container {
+    padding-right: var(--bs-gutter-x, 1.75rem);
+    padding-left: var(--bs-gutter-x, 1.75rem);
+}
+
 .container h1 {
-  margin-top: 80px;
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 15px;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .card {
-  background-color: var(--gray);
-  color: white;
-  padding: 30px 40px;
+    background-color: var(--gray);
+    color: white;
+    padding: 30px;
+    border-radius: 16px;
 }
 
 .card-title {
-  font-weight: bold;
-  font-size: 1.7rem;
-  margin-bottom: 0.2rem;
+    font-weight: bold;
+    font-size: 1.7rem;
+    margin-bottom: 0.2rem;
 }
 
 .card-subtitle {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .card p {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .card p span {
-  margin-left: 5px;
-  font-size: 1.1rem;
+    margin-left: 5px;
+    font-size: 1.1rem;
 }
 
 .carousel-control-next,
 .carousel-control-prev {
-  width: 7%;
+    width: 7%;
 }
 
 .things-title {
-  font-weight: bold;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 1) .card {
-  background-color: var(--red);
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n+1) .card {
+    background-color: var(--red);
 }
 
-.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 2) .card {
-  background-color: var(--yellow);
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n+2) .card {
+    background-color: var(--yellow);
 }
 
-.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 3) .card {
-  background-color: var(--orange);
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n+3) .card {
+    background-color: var(--orange);
 }
 
-.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 4) .card {
-  background-color: var(--green);
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n+4) .card {
+    background-color: var(--green);
 }
 
-.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 5) .card {
-  background-color: var(--purple);
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n+5) .card {
+    background-color: var(--purple);
 }
 
-.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 6) .card {
-  background-color: var(--lightBlue);
-}
-.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 7) .card {
-  background-color: var(--blue);
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n+6) .card {
+    background-color: var(--lightBlue);
 }
 
-.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 8) .card {
-  background-color: var(--darkBlue);
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n+7) .card {
+    background-color: var(--blue);
 }
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n+8) .card {
+    background-color: var(--darkBlue);
+}
+
+.carousel-things .carousel-inner .carousel-item:nth-child(1) .card {
+    background-image: url(../img/solar-system.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 111%;
+}
+
 
 /* Bottom Tabs */
 
 footer .fixed-bottom {
-  z-index: unset;
-  bottom: 15px;
-  right: 10px;
-  left: 10px;
+    z-index: unset;
+    bottom: 15px;
+    right: 10px;
+    left: 10px;
 }
 
-.nav-pills .nav-link {
-  background-color: var(--gray);
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
+.nav-pills .nav-link.nav-link-tab {
+    background-color: var(--gray);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10px;
 }
 
-.nav-pills .nav-link.active {
-  background-color: var(--yellow);
-  color: var(--gray);
+.nav-pills .nav-link.nav-link-tab.active {
+    background-color: var(--yellow);
+    color: var(--gray);
 }
 
 .nav-justified .nav-item:nth-child(1),
 .nav-justified .nav-item:nth-child(2),
 .nav-justified .nav-item:nth-child(3) {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
-.nav-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.nav-link.nav-link-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.nav-link img {
-  height: 20px;
-  margin-bottom: 5px;
+.nav-link.nav-link-tab img {
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+    body {
+        overflow-y: hidden;
+    }
 }
