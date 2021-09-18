@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no"> -->
+  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+  <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="css/index.css">
+
+  <title>Welcome to Space!</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar navbar-dark fixed-top">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><b>Welcome</b></h5>
+            <button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container container-news">
+    <h1>News</h1>
+    <div id="news">
+
+    </div>
+  </div>
+
+  <footer>
+    <ul class="nav nav-pills nav-justified fixed-bottom">
+      <li class="nav-item">
+        <a id="planetsTab" onclick="window.location='index.html'" class="nav-link nav-link-tab" aria-current="page" href="#">
+          <img src="img/saturn.svg" alt="planets">
+          <label>Planets</label>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a id="asteroidsTab" onclick="window.location='tab2.html'" class="nav-link nav-link-tab active" href="#">
+          <img src="img/comet-dark.svg" alt="asteroids">
+          <label>Asteroids</label>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a id="spaceXTab" onclick="window.location='tab3.html'" class="nav-link nav-link-tab" href="#">
+          <img src="img/rocket.svg" alt="spaceX">
+          <label>SpaceX</label>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a id="newsTab" onclick="window.location='tab4.html'" class="nav-link nav-link-tab">
+          <img src="img/journalism.svg" alt="news">
+          <label>News</label>
+        </a>
+      </li>
+    </ul>
+  </footer>
+
+  <script src="lib/bootstrap/bootstrap.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/controller.js"></script>
+</body>
+
+</html>
