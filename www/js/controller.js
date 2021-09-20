@@ -1,42 +1,45 @@
 function AppController() {
-  this.init = () => {
-    let today = new Date();
-    let yesterday = new Date();
+    this.init = () => {
+        let today = new Date();
+        let yesterday = new Date();
 
-    yesterday.setDate(today.getDate() - 1);
-    let yesterdayFormat = yesterday.toISOString().split("T")[0];
-    AppController.getPlanets();
-    AppController.getKnowncount();
-    AppController.getAsteroids(yesterdayFormat);
-    AppController.getSpaceX("past");
-    AppController.getSpaceX("upcoming");
-    AppController.getNews();
+        yesterday.setDate(today.getDate() - 1);
+        let yesterdayFormat = yesterday.toISOString().split("T")[0];
+        AppController.getPlanets();
+        AppController.getKnowncount();
+        AppController.getAsteroids(yesterdayFormat);
+        AppController.getSpaceX("past");
+        AppController.getSpaceX("upcoming");
+        AppController.getNews();
 
-    var dateAsteroids = document.getElementById("date-asteroids");
-    dateAsteroids.innerHTML += `${yesterday.toDateString()}`;
-  };
+        var dateAsteroids = document.getElementById("date-asteroids");
+        dateAsteroids.innerHTML += `${yesterday.toDateString()}`;
 
-  this.getPlanets = () => {
-    fetch(`https://api.le-systeme-solaire.net/rest/bodies`)
-      .then((response) => response.json())
-      .then((resp) => {
-        AppController.buildPlanets(resp.bodies);
-      })
-      .catch((error) => console.log("error ->" + error));
-  };
+    };
 
-  this.buildPlanets = (results) => {
-    let aux = true;
-    results.forEach((item) => {
-      if (item.isPlanet === true) {
-        const qntMoons = item.moons != null ? item.moons.length : 0;
-        var planets = document.getElementById("planets");
-        planets.innerHTML += `
+    this.getPlanets = () => {
+        fetch(`https://api.le-systeme-solaire.net/rest/bodies`)
+            .then((response) => response.json())
+            .then((resp) => {
+                AppController.buildPlanets(resp.bodies);
+            })
+            .catch((error) => console.log("error ->" + error));
+    };
+
+    this.buildPlanets = (results) => {
+        let aux = true;
+        results.forEach((item) => {
+            if (item.isPlanet === true) {
+                const qntMoons = item.moons != null ? item.moons.length : 0;
+                var planets = document.getElementById("planets");
+                planets.innerHTML += `
             <div class="carousel-item ${aux ? "active" : ""}">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">${item.englishName}</h5>
                         <h6 class="card-subtitle">${item.name}</h6>
+                        <div class="row">
+                        <div class="col-md-6 col-sm-12">
                         <p class="card-text">Moons <span>${qntMoons}</span></p>
                         <p class="card-text">Aphelion <span>${
                           item.aphelion
@@ -50,6 +53,8 @@ function AppController() {
                         <p class="card-text">Inclination <span>${
                           item.inclination
                         }º</span></p>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
                         <p class="card-text">Volume <span>${
                           item.vol.volValue
                         } 10<sup>${item.vol.volExponent}</sup> kg</span></p>
@@ -62,29 +67,31 @@ function AppController() {
                         <p class="card-text">Average temperature <span>${
                           item.avgTemp
                         } K</span></p>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </div>
             `;
-        aux = false;
-      }
-    });
-  };
+                aux = false;
+            }
+        });
+    };
 
-  this.getKnowncount = () => {
-    fetch(`https://api.le-systeme-solaire.net/rest/knowncount`)
-      .then((response) => response.json())
-      .then((resp) => {
-        AppController.buildKnowncount(resp.knowncount);
-      })
-      .catch((error) => console.log(error));
-  };
+    this.getKnowncount = () => {
+        fetch(`https://api.le-systeme-solaire.net/rest/knowncount`)
+            .then((response) => response.json())
+            .then((resp) => {
+                AppController.buildKnowncount(resp.knowncount);
+            })
+            .catch((error) => console.log(error));
+    };
 
-  this.buildKnowncount = (results) => {
-    let aux = true;
-    results.forEach((item) => {
-      var things = document.getElementById("things");
-      things.innerHTML += `
+    this.buildKnowncount = (results) => {
+        let aux = true;
+        results.forEach((item) => {
+            var things = document.getElementById("things");
+            things.innerHTML += `
       <div class="carousel-item ${aux ? "active" : ""}">
         <div class="card">
           <div class="card-body">
@@ -100,25 +107,26 @@ function AppController() {
         </div>
       </div>
             `;
-      aux = false;
-    });
-  };
+            aux = false;
+        });
+    };
 
-  this.getAsteroids = (yesterday) => {
-    fetch(
-      `https://api.nasa.gov/neo/rest/v1/feed?start_date=${yesterday}&end_date=${yesterday}&api_key=XbST8m2LTc3xVc1j1LbdDjIorjj4IU6PPHQZFoU7`,
-    )
-      .then((response) => response.json())
-      .then((resp) => {
-        AppController.buildAsteroids(resp.near_earth_objects[yesterday]);
-      })
-      .catch((error) => console.log("error -> " + error));
-  };
+    this.getAsteroids = (yesterday) => {
+        fetch(
+                `https://api.nasa.gov/neo/rest/v1/feed?start_date=${yesterday}&end_date=${yesterday}&api_key=XbST8m2LTc3xVc1j1LbdDjIorjj4IU6PPHQZFoU7`,
+            )
+            .then((response) => response.json())
+            .then((resp) => {
+                AppController.buildAsteroids(resp.near_earth_objects[yesterday]);
+            })
+            .catch((error) => console.log("error -> " + error));
+    };
 
-  this.buildAsteroids = (results) => {
-    results.forEach((item) => {
-      var asteroids = document.getElementById("asteroids");
-      asteroids.innerHTML += `
+    this.buildAsteroids = (results) => {
+        results.forEach((item) => {
+            var asteroids = document.getElementById("asteroids");
+            asteroids.innerHTML += `
+            <div class="col-md-6 col-sm-12">
       <div class="card">
             <div class="card-body">
                 <h5 class="card-title">
@@ -144,36 +152,46 @@ function AppController() {
                 }" target="_blank" class="card-text card-text-link">Read more...</a>
             </div>
         </div>
+        </div>
             `;
-    });
-  };
+        });
+    };
 
-  this.getSpaceX = (type) => {
-    fetch(`https://api.spacexdata.com/v4/launches/${type}`)
-      .then((response) => response.json())
-      .then((resp) => {
-        AppController.buildSpaceX(resp, type);
-      })
-      .catch((error) => console.log(error));
-  };
+    this.getSpaceX = (type) => {
+        fetch(`https://api.spacexdata.com/v4/launches/${type}`)
+            .then((response) => response.json())
+            .then((resp) => {
+                AppController.buildSpaceX(resp, type);
+            })
+            .catch((error) => console.log(error));
+    };
 
-  this.buildSpaceX = (results, type) => {
-    let aux = true;
-    results.forEach((item) => {
-      var launch = document.getElementById(type);
-      launch.innerHTML += `
+    this.buildSpaceX = (results, type) => {
+            let aux = true;
+            results.forEach((item) => {
+                        var launch = document.getElementById(type);
+                        launch.innerHTML += `
       <div class="carousel-item ${aux ? "active" : ""}">
-      <div class="card">
-            <img class="card-img-top" src="${item.links.patch.small}" alt="${
-        item.name
-      }">
+      <div class="card card-space-x">
+      ${
+        item.links.patch.small ? `<img class="card-img-top" src="${item.links.patch.small}" alt="${
+          item.name
+        }">` : "<img class='card-img-top no-photo' src='../img/no-photo.svg' alt='No photo'>"
+      }
             <div class="card-body">
+              <div class="row align-items-center">
+              <div class="col-md-11 col-sm-9">
               <p class="card-title">
                 ${item.name}
               </p>
-              <p class="card-text launch-desc">${
-                item.details ? item.details : ""
-              }</p>
+              </div>
+              <div class="col-md-1 col-sm-3">
+              <img src="../img/info.svg" class="img-info" onclick="hideShowDiv()">
+              </div>
+              </div>
+              ${
+                item.details ? `<p class="card-text launch-desc" id="card-details">${item.details}</p>` : ""
+              }
               <div class="launch-info">
                 <p class="card-text">
                   Launch date <span>${item.date_utc.split("T")[0]}</span>
@@ -182,28 +200,29 @@ function AppController() {
                   Flight number <span>${item.flight_number}</span>
                 </p>
               </div>
-              <a href="${item.links.reddit.campaign}">Read more...</a>
+              <a class="card-text-link" href="${item.links.reddit.campaign}">Read more...</a>
             </div>
           </div>
           </div>
             `;
-      aux = false;
-    });
-  };
+            aux = false;
+        });
+    };
 
-  this.getNews = () => {
-    fetch(`https://api.spaceflightnewsapi.net/v3/articles`)
-      .then((response) => response.json())
-      .then((resp) => {
-        AppController.buildNews(resp);
-      })
-      .catch((error) => console.log(error));
-  };
+    this.getNews = () => {
+        fetch(`https://api.spaceflightnewsapi.net/v3/articles`)
+            .then((response) => response.json())
+            .then((resp) => {
+                AppController.buildNews(resp);
+            })
+            .catch((error) => console.log(error));
+    };
 
-  this.buildNews = (results) => {
-    results.forEach((item) => {
-      var news = document.getElementById("news");
-      news.innerHTML += `
+    this.buildNews = (results) => {
+        results.forEach((item) => {
+            var news = document.getElementById("news");
+            news.innerHTML += `
+            <div class="col-md-4 col-sm-12 d-flex align-items-stretch">
       <div class="card">
         <img class="card-img-top" src="${item.imageUrl}" alt="${item.newsSite}">
         <div class="card-body">
@@ -212,64 +231,65 @@ function AppController() {
         item.publishedAt.split("T")[0]
       }</p>
           <p class="card-text">${item.summary}</p>
-          <a href="${item.url}" target="_blank">Read more...</a>
+          <a class="card-text-link" href="${item.url}" target="_blank">Read more...</a>
         </div>
       </div>
+      </div>
             `;
-    });
-  };
+        });
+    };
 
-  AppController.instance = null;
+    AppController.instance = null;
 
-  AppController.getInstance = () => {
-    if (AppController.instance == null)
-      AppController.instance = new AppController();
-    return AppController.instance;
-  };
+    AppController.getInstance = () => {
+        if (AppController.instance == null)
+            AppController.instance = new AppController();
+        return AppController.instance;
+    };
 
-  AppController.init = () => {
-    AppController.getInstance().init();
-  };
+    AppController.init = () => {
+        AppController.getInstance().init();
+    };
 
-  AppController.getPlanets = () => {
-    AppController.getInstance().getPlanets();
-  };
+    AppController.getPlanets = () => {
+        AppController.getInstance().getPlanets();
+    };
 
-  AppController.buildPlanets = (planets) => {
-    AppController.getInstance().buildPlanets(planets);
-  };
+    AppController.buildPlanets = (planets) => {
+        AppController.getInstance().buildPlanets(planets);
+    };
 
-  AppController.getAsteroids = (yesterday) => {
-    AppController.getInstance().getAsteroids(yesterday);
-  };
+    AppController.getAsteroids = (yesterday) => {
+        AppController.getInstance().getAsteroids(yesterday);
+    };
 
-  AppController.buildAsteroids = (asteroids) => {
-    AppController.getInstance().buildAsteroids(asteroids);
-  };
+    AppController.buildAsteroids = (asteroids) => {
+        AppController.getInstance().buildAsteroids(asteroids);
+    };
 
-  AppController.getKnowncount = () => {
-    AppController.getInstance().getKnowncount();
-  };
+    AppController.getKnowncount = () => {
+        AppController.getInstance().getKnowncount();
+    };
 
-  AppController.buildKnowncount = (knowncount) => {
-    AppController.getInstance().buildKnowncount(knowncount);
-  };
+    AppController.buildKnowncount = (knowncount) => {
+        AppController.getInstance().buildKnowncount(knowncount);
+    };
 
-  AppController.getSpaceX = (type) => {
-    AppController.getInstance().getSpaceX(type);
-  };
+    AppController.getSpaceX = (type) => {
+        AppController.getInstance().getSpaceX(type);
+    };
 
-  AppController.buildSpaceX = (spacex, type) => {
-    AppController.getInstance().buildSpaceX(spacex, type);
-  };
+    AppController.buildSpaceX = (spacex, type) => {
+        AppController.getInstance().buildSpaceX(spacex, type);
+    };
 
-  AppController.getNews = () => {
-    AppController.getInstance().getNews();
-  };
+    AppController.getNews = () => {
+        AppController.getInstance().getNews();
+    };
 
-  AppController.buildNews = (news) => {
-    AppController.getInstance().buildNews(news);
-  };
+    AppController.buildNews = (news) => {
+        AppController.getInstance().buildNews(news);
+    };
 }
 
 AppController();
