@@ -110,6 +110,21 @@
     .container-news {
         padding-bottom: 100px;
     }
+
+    .container-spinner{
+        position: absolute;
+        background-color: black;
+        height: calc(100% - 147px);
+        z-index: 2;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .show {
+        display: flex !important
+    }
+
     /* Card */
     
     .card {
@@ -476,6 +491,12 @@
         }
         .card.card-space-x img {
             height: 120px;
+        }
+
+        .row.row-mobile{
+            width: 100%;
+            display: flex;
+            flex-wrap: unset;
         }
     }
     

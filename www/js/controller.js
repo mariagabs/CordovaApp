@@ -14,13 +14,17 @@ function AppController() {
 
     var dateAsteroids = document.getElementById("date-asteroids");
     dateAsteroids.innerHTML += `${yesterday.toDateString()}`;
+
+    var spinner = document.getElementById("spinner");
   };
 
   this.getPlanets = () => {
+    spinner.classList.add("show");
     fetch(`https://api.le-systeme-solaire.net/rest/bodies`)
       .then((response) => response.json())
       .then((resp) => {
         AppController.buildPlanets(resp.bodies);
+        spinner.classList.remove("show");
       })
       .catch((error) => console.log("error ->" + error));
   };
@@ -111,12 +115,14 @@ function AppController() {
   };
 
   this.getAsteroids = (yesterday) => {
+    spinner.classList.add("show");
     fetch(
       `https://api.nasa.gov/neo/rest/v1/feed?start_date=${yesterday}&end_date=${yesterday}&api_key=XbST8m2LTc3xVc1j1LbdDjIorjj4IU6PPHQZFoU7`,
     )
       .then((response) => response.json())
       .then((resp) => {
         AppController.buildAsteroids(resp.near_earth_objects[yesterday]);
+         spinner.classList.remove("show");
       })
       .catch((error) => console.log("error -> " + error));
   };
@@ -157,10 +163,12 @@ function AppController() {
   };
 
   this.getSpaceX = (type) => {
+     spinner.classList.add("show");
     fetch(`https://api.spacexdata.com/v4/launches/${type}`)
       .then((response) => response.json())
       .then((resp) => {
         AppController.buildSpaceX(resp, type);
+         spinner.classList.remove("show");
       })
       .catch((error) => console.log(error));
   };
@@ -181,7 +189,7 @@ function AppController() {
           : "<img class='card-img-top no-photo' src='../img/no-photo.svg' alt='No photo'>"
       }
             <div class="card-body">
-              <div class="row align-items-center">
+              <div class="row align-items-center row-mobile">
               <div class="col-md-11 col-sm-9">
               <p class="card-title">
                 ${item.name}
@@ -221,10 +229,12 @@ function AppController() {
   };
 
   this.getNews = () => {
+     spinner.classList.add("show");
     fetch(`https://api.spaceflightnewsapi.net/v3/articles`)
       .then((response) => response.json())
       .then((resp) => {
         AppController.buildNews(resp);
+         spinner.classList.remove("show");
       })
       .catch((error) => console.log(error));
   };
