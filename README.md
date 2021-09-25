@@ -4,6 +4,33 @@ Project developed for the subject of programming language at the Faculdade de Te
 
 ![Design preview](preview/preview.png)
 
+## 🏁 To use the application
+
+### Install dependencies
+```
+$ cordova platform browser
+```
+
+### Start application
+```
+$ cordova run browser
+```
+
+
+## 📱 To build the APK
+
+```
+$ cordova platform add android
+```
+
+```
+$ cordova plugin rm org.apache.cordova.console --save
+```
+
+```
+$ cordova build --prod android
+```
+
 ## 🔗 APIs
 - [The Solar System OpenData](https://api.le-systeme-solaire.net/en/)
 - [Nasa Asteroids NeoWs](https://api.nasa.gov)
