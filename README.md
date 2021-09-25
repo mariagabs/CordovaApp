@@ -2,6 +2,8 @@
 Are you ready? Join us in this adventure through space. 
 Project developed for the subject of programming language at the Faculdade de Tecnologia Termomecanica, where you will be able to learn more about space.
 
+> If you want the android apk, you can find it at the preview folder as **app-debug.apk**
+
 ![Design preview](preview/preview.png)
 
 ## 🏁 To use the application
