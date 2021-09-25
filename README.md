@@ -8,7 +8,7 @@ Project developed for the subject of programming language at the Faculdade de Te
 
 ### Install dependencies
 ```
-$ cordova platform browser
+$ cordova platform add browser
 ```
 
 ### Start application
