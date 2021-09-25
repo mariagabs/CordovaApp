@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no"> -->
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" type="image/x-icon" href="/www./img/launch.ico">
+    <title>Welcome to Space!</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark fixed-top">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                            <b>Welcome to Space!</b>
+                        </h5>
+                        <button type="button" class="close-btn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="#" onclick="window.location='index.html'">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#" onclick="window.location='about.html'">About</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container container-about">
+        <h1>About us</h1>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="card card-red">
+                    <div class="card-body">
+                        <p class="card-title">Isabelle Okuma de Oliveira</p>
+                        <p class="card-text">082180004</p>
+                        <img src="./img/github.svg" alt="GitHub">
+                        <a href="https://github.com/isabelleokuma">https://github.com/isabelleokuma</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="card card-purple">
+                    <div class="card-body">
+                        <p class="card-title">Laura Gabriela Bento</p>
+                        <p class="card-text">082180029</p>
+                        <img src="./img/github.svg" alt="GitHub">
+                        <a href="https://github.com/laurabento">https://github.com/laurabento</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="card card-green">
+                    <div class="card-body">
+                        <p class="card-title">Maria Gabriela Mota Akamine</p>
+                        <p class="card-text">082180010</p>
+                        <img src="./img/github.svg" alt="GitHub">
+                        <a href="https://github.com/mariagabs">https://github.com/mariagabs</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="card card-blue">
+                    <div class="card-body">
+                        <p class="card-title">Raphael Konichi de Moraes</p>
+                        <p class="card-text">082180028</p>
+                        <img src="./img/github.svg" alt="GitHub">
+                        <a href="https://github.com/raphaelkonichi">https://github.com/raphaelkonichi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1>APIs</h1>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="card card-lightBlue">
+                    <div class="card-body">
+                        <p class="card-title">The Solar System OpenData</p>
+                        <img src="./img/link.svg" alt="The Solar System OpenData">
+                        <a href="https://api.le-systeme-solaire.net/en">api.le-systeme-solaire.net/en</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="card card-yellow">
+                    <div class="card-body">
+                        <p class="card-title">SpaceX</p>
+                        <img src="./img/link.svg" alt="SpaceX">
+                        <a href="https://github.com/r-spacex/SpaceX-API">github.com/r-spacex/SpaceX-API</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="card card-orange">
+                    <div class="card-body">
+                        <p class="card-title">NASA Asteroids NeoWs</p>
+                        <img src="./img/link.svg" alt="NASA Asteroids NeoWs">
+                        <a href="https://api.nasa.gov">api.nasa.gov</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="card card-purple">
+                    <div class="card-body">
+                        <p class="card-title">Spaceflight News</p>
+                        <img src="./img/link.svg" alt="Spaceflight News">
+                        <a href="https://api.spaceflightnewsapi.net/v3/documentation#">api.spaceflightnewsapi.net/v3/documentation#</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/controller.js"></script>
+</body>
+
+<script>
+</script>
+
+</html>

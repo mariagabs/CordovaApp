@@ -122,7 +122,7 @@ function AppController() {
       .then((response) => response.json())
       .then((resp) => {
         AppController.buildAsteroids(resp.near_earth_objects[yesterday]);
-         spinner.classList.remove("show");
+        spinner.classList.remove("show");
       })
       .catch((error) => console.log("error -> " + error));
   };
@@ -163,12 +163,12 @@ function AppController() {
   };
 
   this.getSpaceX = (type) => {
-     spinner.classList.add("show");
+    spinner.classList.add("show");
     fetch(`https://api.spacexdata.com/v4/launches/${type}`)
       .then((response) => response.json())
       .then((resp) => {
         AppController.buildSpaceX(resp, type);
-         spinner.classList.remove("show");
+        spinner.classList.remove("show");
       })
       .catch((error) => console.log(error));
   };
@@ -186,7 +186,7 @@ function AppController() {
       ${
         item.links.patch.small
           ? `<img class="card-img-top" src="${item.links.patch.small}" alt="${item.name}">`
-          : "<img class='card-img-top no-photo' src='../img/no-photo.svg' alt='No photo'>"
+          : "<img class='card-img-top no-photo' src='./img/no-photo.svg' alt='No photo'>"
       }
             <div class="card-body">
               <div class="row align-items-center row-mobile">
@@ -196,7 +196,7 @@ function AppController() {
               </p>
               </div>
               <div class="col-md-1 col-sm-3">
-              <img src="../img/info.svg" class="img-info" ${
+              <img src="./img/info.svg" class="img-info" ${
                 item.details
                   ? `onclick="hideShowDiv('card-details-${type}${index}')"`
                   : ""
@@ -216,9 +216,12 @@ function AppController() {
                   Flight number <span>${item.flight_number}</span>
                 </p>
               </div>
-              <a class="card-text-link" target="_blank" href="${
+              ${
                 item.links.reddit.campaign
-              }">Read more...</a>
+                  ? `<a class="card-text-link" target="_blank" href="${item.links.reddit.campaign}">Read more...</a>`
+                  : ""
+              }
+              
             </div>
           </div>
           </div>
@@ -229,12 +232,12 @@ function AppController() {
   };
 
   this.getNews = () => {
-     spinner.classList.add("show");
+    spinner.classList.add("show");
     fetch(`https://api.spaceflightnewsapi.net/v3/articles`)
       .then((response) => response.json())
       .then((resp) => {
         AppController.buildNews(resp);
-         spinner.classList.remove("show");
+        spinner.classList.remove("show");
       })
       .catch((error) => console.log(error));
   };

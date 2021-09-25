@@ -1,524 +1,1454 @@
-    @import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
-     :root {
-        --gray: #333333;
-        --yellow: #f2c94c;
-        --orange: #f2994a;
-        --purple: #bb6bd9;
-        --red: #eb5757;
-        --darkBlue: #2f80ed;
-        --blue: #2d9cdb;
-        --lightBlue: #56ccf2;
-        --green: #6fcf97;
-    }
-    
-    body {
-        height: 100vh;
-        background: black;
-        font-family: "PT Sans", Arial, sans-serif;
-    }
-    
-    a {
-        text-decoration: none;
-        color: white;
-    }
-    /* Menu */
-    
-    nav .offcanvas-body,
-    nav .offcanvas-header {
-        background-color: var(--gray);
-        color: white;
-    }
-    
-    nav .offcanvas-header button {
-        outline: none;
-    }
-    
-    nav .offcanvas-header .close-btn {
-        box-sizing: content-box;
-        width: 1em;
-        height: 1em;
-        background: url(../img/close-icon.svg) center/1em auto no-repeat;
-        border: none;
-        background-color: transparent;
-    }
-    
-    nav.navbar-dark {
-        background-color: black;
-    }
-    
-    .navbar-toggler {
-        border: unset;
-    }
-    
-    .navbar-toggler:focus {
-        color: unset;
-        border-color: unset;
-        box-shadow: unset;
-    }
-    
-    .navbar-toggler-icon {
-        width: 1.1em;
-        height: 1.1em;
-        background-image: url(../img/menu-icon.svg) !important;
-    }
-    /* Geral */
-    
-    .container-items,
-    .container-asteroids,
-    .container-news {
-        margin-top: 70px;
-    }
-    
-    .container-planets {
-        margin-top: 30px;
-    }
-    
-    .container-asteroids {
-        overflow-y: scroll;
-    }
-    
-    .container-asteroids h1 {
-        color: white;
-        font-size: 1.8rem;
-        font-weight: bold;
-        margin-bottom: 0px;
-    }
-    
-    .container-asteroids .date-asteroids {
-        color: white;
-        font-size: 1rem;
-        margin-bottom: 15px;
-    }
-    
-    .container {
-        padding-right: var(--bs-gutter-x, 1.75rem);
-        padding-left: var(--bs-gutter-x, 1.75rem);
-    }
-    
-    .container .container-planets h1,
-    .container .container-things h1,
-    .container .container-past-launches h1,
-    .container .container-upcoming-launches h1,
-    .container.container-news h1 {
-        color: white;
-        font-size: 1.8rem;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-    
-    .container-items,
-    .container-news {
-        padding-bottom: 100px;
-    }
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+:root {
+  --gray: #333333;
+  --yellow: #f2c94c;
+  --orange: #f2994a;
+  --purple: #bb6bd9;
+  --red: #eb5757;
+  --darkBlue: #2f80ed;
+  --blue: #2d9cdb;
+  --lightBlue: #56ccf2;
+  --green: #6fcf97;
+}
 
-    .container-spinner{
-        position: absolute;
-        background-color: black;
-        height: calc(100% - 147px);
-        z-index: 2;
-        display: none;
-        justify-content: center;
-        align-items: center;
-    }
+body {
+  height: 100vh;
+  background: black;
+  font-family: "PT Sans", Arial, sans-serif;
+}
 
-    .show {
-        display: flex !important
-    }
+a {
+  text-decoration: none;
+  color: white;
+}
+/* Menu */
 
-    /* Card */
-    
-    .card {
-        background-color: var(--gray);
-        color: white;
-        padding: 25px;
-        border-radius: 16px;
-    }
-    
-    .card-body {
-        padding: 1rem 3rem;
-    }
-    
-    .container-asteroids .card {
-        margin-bottom: 30px;
-    }
-    
-    .card-title {
-        font-weight: bold;
-        font-size: 1.7rem;
-        margin-bottom: 0.2rem;
-    }
-    
-    .card-subtitle {
-        margin-bottom: 1rem;
-    }
-    
-    .card p {
-        margin-bottom: 0;
-    }
-    
-    .card p span {
-        margin-left: 5px;
-        font-size: 1.1rem;
-        font-weight: bold;
-    }
-    
-    .carousel-control-next,
-    .carousel-control-prev {
-        width: 7%;
-    }
-    /* tab1 - index */
-    
-    .things-title {
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 1.2rem;
-    }
-    
-    .carousel-planets .carousel-inner .carousel-item:nth-child(8n+1) .card {
-        background-color: var(--red);
-    }
-    
-    .carousel-planets .carousel-inner .carousel-item:nth-child(8n+2) .card {
-        background-color: var(--yellow);
-    }
-    
-    .carousel-planets .carousel-inner .carousel-item:nth-child(8n+3) .card {
-        background-color: var(--orange);
-    }
-    
-    .carousel-planets .carousel-inner .carousel-item:nth-child(8n+4) .card {
-        background-color: var(--green);
-    }
-    
-    .carousel-planets .carousel-inner .carousel-item:nth-child(8n+5) .card {
-        background-color: var(--purple);
-    }
-    
-    .carousel-planets .carousel-inner .carousel-item:nth-child(8n+6) .card {
-        background-color: var(--lightBlue);
-    }
-    
-    .carousel-planets .carousel-inner .carousel-item:nth-child(8n+7) .card {
-        background-color: var(--blue);
-    }
-    
-    .carousel-planets .carousel-inner .carousel-item:nth-child(8n+8) .card {
-        background-color: var(--darkBlue);
-    }
-    /* tab2 */
-    
-    .asteroids-card-group {
-        margin-bottom: 100px;
-    }
-    
-    .asteroids-card-group .card .card-text-link {
-        font-weight: bold;
-    }
-    
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+1) .card-text-link:hover,
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+1) .card-title {
-        color: var(--green);
-    }
-    
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+2) .card-text-link:hover,
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+2) .card-title {
-        color: var(--purple);
-    }
-    
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+3) .card-text-link:hover,
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+3) .card-title {
-        color: var(--red);
-    }
-    
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+4) .card-text-link:hover,
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+4) .card-title {
-        color: var(--yellow);
-    }
-    
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+5) .card-text-link:hover,
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+5) .card-title {
-        color: var(--orange);
-    }
-    
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+6) .card-text-link:hover,
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+6) .card-title {
-        color: var(--lightBlue);
-    }
-    
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+7) .card-text-link:hover,
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+7) .card-title {
-        color: var(--blue);
-    }
-    
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+8) .card-text-link:hover,
-    .asteroids-card-group .col-md-6.col-sm-12:nth-child(8n+8) .card-title {
-        color: var(--darkBlue);
-    }
-    /* tab3 */
-    
-    .card.card-space-x img {
-        height: 200px;
-        align-self: center;
-        object-fit: contain;
-    }
-    
-    .card.card-space-x img.no-photo {
-        opacity: 0.3;
-        padding: 30px;
-    }
-    
-    .card.card-space-x .card-body .launch-desc {
-        font-size: 12px;
-        margin-top: 5px;
-        margin-bottom: 10px;
-        background-color: rgba(0, 0, 0, 0.3);
-        padding: 15px;
-        border-radius: 10px;
-        display: none;
-    }
-    
-    .carousel-past-launches .carousel-inner .carousel-item .card .card-text-link,
-    .carousel-upcoming-launches .carousel-inner .carousel-item .card .card-text-link {
-        font-weight: bold;
-    }
-    
-    .carousel-past-launches .carousel-inner .carousel-item .card .img-info,
-    .carousel-upcoming-launches .carousel-inner .carousel-item .card .img-info {
-        height: 20px;
-        cursor: pointer;
-    }
-    
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+1) .card .card-title,
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+1) .card .card-text-link:hover,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+1) .card .card-title,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+1) .card .card-text-link:hover {
-        color: var(--red);
-    }
-    
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+2) .card .card-title,
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+2) .card .card-text-link:hover,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+2) .card .card-title,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+2) .card .card-text-link:hover {
-        color: var(--yellow);
-    }
-    
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+3) .card .card-title,
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+3) .card .card-text-link:hover,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+3) .card .card-title,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+3) .card .card-text-link:hover {
-        color: var(--orange);
-    }
-    
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+4) .card .card-title,
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+4) .card .card-text-link:hover,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+4) .card .card-title,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+4) .card .card-text-link:hover {
-        color: var(--green);
-    }
-    
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+5) .card .card-title,
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+5) .card .card-text-link:hover,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+5) .card .card-title,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+5) .card .card-text-link:hover {
-        color: var(--purple);
-    }
-    
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+6) .card .card-title,
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+6) .card .card-text-link:hover,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+6) .card .card-title,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+6) .card .card-text-link:hover {
-        color: var(--lightBlue);
-    }
-    
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+7) .card .card-title,
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+7) .card .card-text-link:hover,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+7) .card .card-title,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+7) .card .card-text-link:hover {
-        color: var(--blue);
-    }
-    
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+8) .card .card-title,
-    .carousel-upcoming-launches .carousel-inner .carousel-item:nth-child(8n+8) .card .card-text-link:hover,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+8) .card .card-title,
-    .carousel-past-launches .carousel-inner .carousel-item:nth-child(8n+8) .card .card-text-link:hover {
-        color: var(--darkBlue);
-    }
-    /* tab4 */
-    
-    .container-news .card {
-        background-color: transparent;
-        padding: 0;
-    }
-    
-    .container-news .card-body {
-        background-color: var(--gray);
-        padding: 30px;
-        border-radius: 0 0 16px 16px;
-    }
-    
-    .container-news img {
-        border-radius: 16px 16px 0 0;
-        height: 265px;
-        object-fit: cover;
-    }
-    
-    .container-news .card {
-        margin-bottom: 30px;
-    }
-    
-    .container-news .card .card-body .card-subtitle {
-        margin-bottom: 10px;
-        opacity: 0.5;
-    }
-    
-    .container-news .card .card-body .card-text {
-        margin-bottom: 10px;
-    }
-    
-    .container-news .card .card-text-link {
-        font-weight: bold;
-    }
-    
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+1) .card-text-link:hover,
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+1) .card-title {
-        color: var(--green);
-    }
-    
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+2) .card-text-link:hover,
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+2) .card-title {
-        color: var(--purple);
-    }
-    
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+3) .card-text-link:hover,
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+3) .card-title {
-        color: var(--red);
-    }
-    
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+4) .card-text-link:hover,
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+4) .card-title {
-        color: var(--yellow);
-    }
-    
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+5) .card-text-link:hover,
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+5) .card-title {
-        color: var(--orange);
-    }
-    
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+6) .card-text-link:hover,
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+6) .card-title {
-        color: var(--lightBlue);
-    }
-    
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+7) .card-text-link:hover,
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+7) .card-title {
-        color: var(--blue);
-    }
-    
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+8) .card-text-link:hover,
-    .container-news .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n+8) .card-title {
-        color: var(--darkBlue);
-    }
-    /* Bottom Tabs */
-    
-    footer .fixed-bottom {
-        z-index: unset;
-        padding: 15px;
-        background-color: black;
-    }
-    
-    .nav-pills .nav-link.nav-link-tab {
-        background-color: var(--gray);
-        color: white;
-        font-size: 14px;
-        font-weight: bold;
-        border-radius: 10px;
-    }
-    
-    .nav-pills .nav-link.nav-link-tab.active {
-        background-color: var(--yellow);
-        color: var(--gray);
-        cursor: pointer;
-    }
-    
-    .nav-justified .nav-item:nth-child(1),
-    .nav-justified .nav-item:nth-child(2),
-    .nav-justified .nav-item:nth-child(3) {
-        margin-right: 15px;
-    }
-    
-    .nav-link.nav-link-tab {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .nav-link.nav-link-tab img {
-        height: 20px;
-        margin-bottom: 5px;
-    }
-    /* Scroolbar */
-    
-     ::-webkit-scrollbar {
-        width: 10px;
-    }
-    
-     ::-webkit-scrollbar-track {
-        background: black;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-    }
-    
-     ::-webkit-scrollbar-thumb {
-        background: var(--gray);
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-    }
-    
-     ::-webkit-scrollbar-thumb:hover {
-        background: var(--gray);
-    }
-    /* Mobile */
-    
-    @media (max-width: 768px) {
-        .container-upcoming-launches {
-            margin-top: 30px;
-        }
-        .card-body {
-            padding: 1rem 1rem;
-        }
-        .container-news img {
-            height: 160px;
-        }
-        .card.card-space-x img {
-            height: 120px;
-        }
+nav .offcanvas-body,
+nav .offcanvas-header {
+  background-color: var(--gray);
+  color: white;
+}
 
-        .row.row-mobile{
-            width: 100%;
-            display: flex;
-            flex-wrap: unset;
-        }
-    }
-    
-    @media (max-width: 500px) {
-        .carousel-things .carousel-inner .carousel-item:nth-child(1) .card {
-            background-image: url(../img/solar-system.svg);
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position-x: 111%;
-        }
-    }
-    
-    @media (max-width: 376px) {
-        .nav-link.nav-link-tab img {
-            height: 15px;
-        }
-        .nav-link.nav-link-tab label {
-            font-size: 11px;
-        }
-        .nav-justified .nav-item:nth-child(1),
-        .nav-justified .nav-item:nth-child(2),
-        .nav-justified .nav-item:nth-child(3) {
-            margin-right: 5px;
-        }
-    }
+nav .offcanvas-header button {
+  outline: none;
+}
+
+nav .offcanvas-header .close-btn {
+  box-sizing: content-box;
+  width: 1em;
+  height: 1em;
+  background: url(../img/close-icon.svg) center/1em auto no-repeat;
+  border: none;
+  background-color: transparent;
+}
+
+nav.navbar-dark {
+  background-color: black;
+}
+
+.navbar-toggler {
+  border: unset;
+}
+
+.navbar-toggler:focus {
+  color: unset;
+  border-color: unset;
+  box-shadow: unset;
+}
+
+.navbar-toggler-icon {
+  width: 1.1em;
+  height: 1.1em;
+  background-image: url(../img/menu-icon.svg) !important;
+}
+/* Geral */
+
+.container-items,
+.container-asteroids,
+.container-news {
+  margin-top: 70px;
+}
+
+.container-planets {
+  margin-top: 30px;
+}
+
+.container-asteroids {
+  overflow-y: scroll;
+}
+
+.container-asteroids h1 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.container-asteroids .date-asteroids {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.container {
+  padding-right: var(--bs-gutter-x, 1.75rem);
+  padding-left: var(--bs-gutter-x, 1.75rem);
+}
+
+.container .container-planets h1,
+.container .container-things h1,
+.container .container-past-launches h1,
+.container .container-upcoming-launches h1,
+.container.container-news h1 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.container-items,
+.container-news {
+  padding-bottom: 100px;
+}
+
+.container-spinner {
+  position: absolute;
+  background-color: black;
+  height: calc(100% - 147px);
+  z-index: 2;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.show {
+  display: flex !important;
+}
+
+/* Card */
+
+.card {
+  background-color: var(--gray);
+  color: white;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+.card-body {
+  padding: 1rem 3rem;
+}
+
+.container-asteroids .card {
+  margin-bottom: 30px;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.7rem;
+  margin-bottom: 0.2rem;
+}
+
+.card-subtitle {
+  margin-bottom: 1rem;
+}
+
+.card p {
+  margin-bottom: 0;
+}
+
+.card p span {
+  margin-left: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 7%;
+}
+/* tab1 - index */
+
+.things-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 1) .card {
+  background-color: var(--red);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 2) .card {
+  background-color: var(--yellow);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 3) .card {
+  background-color: var(--orange);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 4) .card {
+  background-color: var(--green);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 5) .card {
+  background-color: var(--purple);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 6) .card {
+  background-color: var(--lightBlue);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 7) .card {
+  background-color: var(--blue);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 8) .card {
+  background-color: var(--darkBlue);
+}
+/* tab2 */
+
+.asteroids-card-group {
+  margin-bottom: 100px;
+}
+
+.asteroids-card-group .card .card-text-link {
+  font-weight: bold;
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 1)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 1) .card-title {
+  color: var(--green);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 2)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 2) .card-title {
+  color: var(--purple);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 3)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 3) .card-title {
+  color: var(--red);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 4)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 4) .card-title {
+  color: var(--yellow);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 5)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 5) .card-title {
+  color: var(--orange);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 6)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 6) .card-title {
+  color: var(--lightBlue);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 7)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 7) .card-title {
+  color: var(--blue);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 8)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 8) .card-title {
+  color: var(--darkBlue);
+}
+/* tab3 */
+
+.card.card-space-x img {
+  height: 200px;
+  align-self: center;
+  object-fit: contain;
+}
+
+.card.card-space-x img.no-photo {
+  opacity: 0.3;
+  padding: 30px;
+}
+
+.card.card-space-x .card-body .launch-desc {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+  display: none;
+}
+
+.carousel-past-launches .carousel-inner .carousel-item .card .card-text-link,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item
+  .card
+  .card-text-link {
+  font-weight: bold;
+}
+
+.carousel-past-launches .carousel-inner .carousel-item .card .img-info,
+.carousel-upcoming-launches .carousel-inner .carousel-item .card .img-info {
+  height: 20px;
+  cursor: pointer;
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 1)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 1)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 1)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 1)
+  .card
+  .card-text-link:hover {
+  color: var(--red);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 2)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 2)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 2)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 2)
+  .card
+  .card-text-link:hover {
+  color: var(--yellow);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 3)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 3)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 3)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 3)
+  .card
+  .card-text-link:hover {
+  color: var(--orange);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 4)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 4)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 4)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 4)
+  .card
+  .card-text-link:hover {
+  color: var(--green);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 5)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 5)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 5)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 5)
+  .card
+  .card-text-link:hover {
+  color: var(--purple);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 6)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 6)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 6)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 6)
+  .card
+  .card-text-link:hover {
+  color: var(--lightBlue);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 7)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 7)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 7)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 7)
+  .card
+  .card-text-link:hover {
+  color: var(--blue);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 8)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 8)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 8)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 8)
+  .card
+  .card-text-link:hover {
+  color: var(--darkBlue);
+}
+/* tab4 */
+
+.container-news .card {
+  background-color: transparent;
+  padding: 0;
+}
+
+.container-news .card-body {
+  background-color: var(--gray);
+  padding: 30px;
+  border-radius: 0 0 16px 16px;
+}
+
+.container-news img {
+  border-radius: 16px 16px 0 0;
+  height: 265px;
+  object-fit: cover;
+}
+
+.container-news .card {
+  margin-bottom: 30px;
+}
+
+.container-news .card .card-body .card-subtitle {
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+.container-news .card .card-body .card-text {
+  margin-bottom: 10px;
+}
+
+.container-news .card .card-text-link {
+  font-weight: bold;
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 1)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 1)
+  .card-title {
+  color: var(--green);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 2)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 2)
+  .card-title {
+  color: var(--purple);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 3)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 3)
+  .card-title {
+  color: var(--red);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 4)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 4)
+  .card-title {
+  color: var(--yellow);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 5)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 5)
+  .card-title {
+  color: var(--orange);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 6)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 6)
+  .card-title {
+  color: var(--lightBlue);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 7)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 7)
+  .card-title {
+  color: var(--blue);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 8)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 8)
+  .card-title {
+  color: var(--darkBlue);
+}
+/* Bottom Tabs */
+
+footer .fixed-bottom {
+  z-index: unset;
+  padding: 15px;
+  background-color: black;
+}
+
+.nav-pills .nav-link.nav-link-tab {
+  background-color: var(--gray);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.nav-pills .nav-link.nav-link-tab.active {
+  background-color: var(--yellow);
+  color: var(--gray);
+  cursor: pointer;
+}
+
+.nav-justified .nav-item:nth-child(1),
+.nav-justified .nav-item:nth-child(2),
+.nav-justified .nav-item:nth-child(3) {
+  margin-right: 15px;
+}
+
+.nav-link.nav-link-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-link.nav-link-tab img {
+  height: 20px;
+  margin-bottom: 5px;
+}
+/* Scroolbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray);
+}
+/* Mobile */
+
+@media (max-width: 768px) {
+  .container-upcoming-launches {
+    margin-top: 30px;
+  }
+  .card-body {
+    padding: 1rem 1rem;
+  }
+  .container-news img {
+    height: 160px;
+  }
+  .card.card-space-x img {
+    height: 120px;
+  }
+
+  .row.row-mobile {
+    width: 100%;
+    display: flex;
+    flex-wrap: unset;
+  }
+}
+
+@media (max-width: 500px) {
+  .carousel-things .carousel-inner .carousel-item:nth-child(1) .card {
+    background-image: url(../img/solar-system.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 111%;
+  }
+}
+
+@media (max-width: 376px) {
+  .nav-link.nav-link-tab img {
+    height: 15px;
+  }
+  .nav-link.nav-link-tab label {
+    font-size: 11px;
+  }
+  .nav-justified .nav-item:nth-child(1),
+  .nav-justified .nav-item:nth-child(2),
+  .nav-justified .nav-item:nth-child(3) {
+    margin-right: 5px;
+  }
+}
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+:root {
+  --gray: #333333;
+  --yellow: #f2c94c;
+  --orange: #f2994a;
+  --purple: #bb6bd9;
+  --red: #eb5757;
+  --darkBlue: #2f80ed;
+  --blue: #2d9cdb;
+  --lightBlue: #56ccf2;
+  --green: #6fcf97;
+}
+
+body {
+  height: 100vh;
+  background: black;
+  font-family: "PT Sans", Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+/* Menu */
+
+nav .offcanvas-body,
+nav .offcanvas-header {
+  background-color: var(--gray);
+  color: white;
+}
+
+nav .offcanvas-header button {
+  outline: none;
+}
+
+nav .offcanvas-header .close-btn {
+  box-sizing: content-box;
+  width: 1em;
+  height: 1em;
+  background: url(../img/close-icon.svg) center/1em auto no-repeat;
+  border: none;
+  background-color: transparent;
+}
+
+nav.navbar-dark {
+  background-color: black;
+}
+
+.navbar-toggler {
+  border: unset;
+}
+
+.navbar-toggler:focus {
+  color: unset;
+  border-color: unset;
+  box-shadow: unset;
+}
+
+.navbar-toggler-icon {
+  width: 1.1em;
+  height: 1.1em;
+  background-image: url(../img/menu-icon.svg) !important;
+}
+/* Geral */
+
+.container-items,
+.container-asteroids,
+.container-news {
+  margin-top: 70px;
+}
+
+.container-planets {
+  margin-top: 30px;
+}
+
+.container-asteroids {
+  overflow-y: scroll;
+}
+
+.container-asteroids h1 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.container-asteroids .date-asteroids {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.container {
+  padding-right: var(--bs-gutter-x, 1.75rem);
+  padding-left: var(--bs-gutter-x, 1.75rem);
+}
+
+.container .container-planets h1,
+.container .container-things h1,
+.container .container-past-launches h1,
+.container .container-upcoming-launches h1,
+.container.container-news h1 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.container-items,
+.container-news {
+  padding-bottom: 100px;
+}
+/* Card */
+
+.card {
+  background-color: var(--gray);
+  color: white;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+.card-body {
+  padding: 1rem 3rem;
+}
+
+.container-asteroids .card {
+  margin-bottom: 30px;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.7rem;
+  margin-bottom: 0.2rem;
+}
+
+.card-subtitle {
+  margin-bottom: 1rem;
+}
+
+.card p {
+  margin-bottom: 0;
+}
+
+.card p span {
+  margin-left: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 7%;
+}
+/* tab1 - index */
+
+.things-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 1) .card {
+  background-color: var(--red);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 2) .card {
+  background-color: var(--yellow);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 3) .card {
+  background-color: var(--orange);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 4) .card {
+  background-color: var(--green);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 5) .card {
+  background-color: var(--purple);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 6) .card {
+  background-color: var(--lightBlue);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 7) .card {
+  background-color: var(--blue);
+}
+
+.carousel-planets .carousel-inner .carousel-item:nth-child(8n + 8) .card {
+  background-color: var(--darkBlue);
+}
+/* tab2 */
+
+.asteroids-card-group {
+  margin-bottom: 100px;
+}
+
+.asteroids-card-group .card .card-text-link {
+  font-weight: bold;
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 1)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 1) .card-title {
+  color: var(--green);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 2)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 2) .card-title {
+  color: var(--purple);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 3)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 3) .card-title {
+  color: var(--red);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 4)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 4) .card-title {
+  color: var(--yellow);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 5)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 5) .card-title {
+  color: var(--orange);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 6)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 6) .card-title {
+  color: var(--lightBlue);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 7)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 7) .card-title {
+  color: var(--blue);
+}
+
+.asteroids-card-group
+  .col-md-6.col-sm-12:nth-child(8n + 8)
+  .card-text-link:hover,
+.asteroids-card-group .col-md-6.col-sm-12:nth-child(8n + 8) .card-title {
+  color: var(--darkBlue);
+}
+/* tab3 */
+
+.card.card-space-x img {
+  height: 200px;
+  align-self: center;
+  object-fit: contain;
+}
+
+.card.card-space-x img.no-photo {
+  opacity: 0.3;
+  padding: 30px;
+}
+
+.card.card-space-x .card-body .launch-desc {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+  display: none;
+}
+
+.carousel-past-launches .carousel-inner .carousel-item .card .card-text-link,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item
+  .card
+  .card-text-link {
+  font-weight: bold;
+}
+
+.carousel-past-launches .carousel-inner .carousel-item .card .img-info,
+.carousel-upcoming-launches .carousel-inner .carousel-item .card .img-info {
+  height: 20px;
+  cursor: pointer;
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 1)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 1)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 1)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 1)
+  .card
+  .card-text-link:hover {
+  color: var(--red);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 2)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 2)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 2)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 2)
+  .card
+  .card-text-link:hover {
+  color: var(--yellow);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 3)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 3)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 3)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 3)
+  .card
+  .card-text-link:hover {
+  color: var(--orange);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 4)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 4)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 4)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 4)
+  .card
+  .card-text-link:hover {
+  color: var(--green);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 5)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 5)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 5)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 5)
+  .card
+  .card-text-link:hover {
+  color: var(--purple);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 6)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 6)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 6)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 6)
+  .card
+  .card-text-link:hover {
+  color: var(--lightBlue);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 7)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 7)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 7)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 7)
+  .card
+  .card-text-link:hover {
+  color: var(--blue);
+}
+
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 8)
+  .card
+  .card-title,
+.carousel-upcoming-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 8)
+  .card
+  .card-text-link:hover,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 8)
+  .card
+  .card-title,
+.carousel-past-launches
+  .carousel-inner
+  .carousel-item:nth-child(8n + 8)
+  .card
+  .card-text-link:hover {
+  color: var(--darkBlue);
+}
+/* tab4 */
+
+.container-news .card {
+  background-color: transparent;
+  padding: 0;
+}
+
+.container-news .card-body {
+  background-color: var(--gray);
+  padding: 30px;
+  border-radius: 0 0 16px 16px;
+}
+
+.container-news img {
+  border-radius: 16px 16px 0 0;
+  height: 265px;
+  object-fit: cover;
+}
+
+.container-news .card {
+  margin-bottom: 30px;
+}
+
+.container-news .card .card-body .card-subtitle {
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+.container-news .card .card-body .card-text {
+  margin-bottom: 10px;
+}
+
+.container-news .card .card-text-link {
+  font-weight: bold;
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 1)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 1)
+  .card-title {
+  color: var(--green);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 2)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 2)
+  .card-title {
+  color: var(--purple);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 3)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 3)
+  .card-title {
+  color: var(--red);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 4)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 4)
+  .card-title {
+  color: var(--yellow);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 5)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 5)
+  .card-title {
+  color: var(--orange);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 6)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 6)
+  .card-title {
+  color: var(--lightBlue);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 7)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 7)
+  .card-title {
+  color: var(--blue);
+}
+
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 8)
+  .card-text-link:hover,
+.container-news
+  .col-md-4.col-sm-12.d-flex.align-items-stretch:nth-child(8n + 8)
+  .card-title {
+  color: var(--darkBlue);
+}
+
+/* about */
+.container-about {
+  margin-top: 70px;
+}
+
+.container-about h1 {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.container-about .card {
+  margin-bottom: 30px;
+}
+
+.card-red {
+  background: var(--red);
+}
+
+.card-purple {
+  background: var(--purple);
+}
+
+.card-green {
+  background: var(--green);
+}
+
+.card-blue {
+  background: var(--darkBlue);
+}
+
+.card-lightBlue {
+  background: var(--lightBlue);
+}
+
+.card-orange {
+  background: var(--orange);
+}
+
+.card-yellow {
+  background: var(--yellow);
+}
+
+.container-about .card-title {
+  font-size: 1.5rem;
+}
+
+.container-about .card-text {
+  font-size: 1.2rem;
+}
+
+.container-about a {
+  word-break: break-all;
+}
+
+.container-about a:hover {
+  color: white;
+  border-bottom: 0.5px solid white;
+}
+
+.container-about img {
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+/* Bottom Tabs */
+
+footer .fixed-bottom {
+  z-index: unset;
+  padding: 15px;
+  background-color: black;
+}
+
+.nav-pills .nav-link.nav-link-tab {
+  background-color: var(--gray);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.nav-pills .nav-link.nav-link-tab.active {
+  background-color: var(--yellow);
+  color: var(--gray);
+  cursor: pointer;
+}
+
+.nav-justified .nav-item:nth-child(1),
+.nav-justified .nav-item:nth-child(2),
+.nav-justified .nav-item:nth-child(3) {
+  margin-right: 15px;
+}
+
+.nav-link.nav-link-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-link.nav-link-tab img {
+  height: 20px;
+  margin-bottom: 5px;
+}
+/* Scroolbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray);
+}
+/* Mobile */
+
+@media (max-width: 768px) {
+  .container-upcoming-launches {
+    margin-top: 30px;
+  }
+  .card-body {
+    padding: 1rem 1rem;
+  }
+  .container-news img {
+    height: 160px;
+  }
+  .card.card-space-x img {
+    height: 120px;
+  }
+}
+
+@media (max-width: 500px) {
+  .carousel-things .carousel-inner .carousel-item:nth-child(1) .card {
+    background-image: url(../img/solar-system.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 111%;
+  }
+}
+
+@media (max-width: 376px) {
+  .nav-link.nav-link-tab img {
+    height: 15px;
+  }
+  .nav-link.nav-link-tab label {
+    font-size: 11px;
+  }
+  .nav-justified .nav-item:nth-child(1),
+  .nav-justified .nav-item:nth-child(2),
+  .nav-justified .nav-item:nth-child(3) {
+    margin-right: 5px;
+  }
+}
